@@ -1,0 +1,89 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible',content='IE=edge')
+    meta(name='viewport',content='height=device-height,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no')
+    link(rel='stylesheet',href='/stylesheets/Normalize.css')
+    link(href='http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.css',rel="stylesheet")
+    link(href='http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css',rel="stylesheet")
+    link(rel='stylesheet',href='/stylesheets/style.css')
+    script(src='//cdn.bootcss.com/jquery/3.1.1/jquery.js')
+    script(src='//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js')
+    script(src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js')
+    script(src='./javascripts/socket.io.js',type="text/javascript",charset="utf-8")
+  body
+    nav.navbar.navbar-default.navbar-set.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button',data-toggle='collapse',data-target='#bs-example-navbar-collapse-1',aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href='/'): img.navbar-brand(src='./images/background.jpg')
+          p#userinfo
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1
+          form.navbar-form.navbar-left
+            .form-group
+              input.form-control(type="text",placeholder="Search")
+            button.btn.btn-default(type="submit") Submit
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href="/") 个人中心
+                span.glyphicon.glyphicon-globe(aria-hidden="true")
+            li
+            if (user!=null)
+              li
+                a(href='/messagehome') 我的Line
+              li
+                a(href='/u/'+user.name) 说说
+              li
+                a(href='/photo') 相册
+              li
+                a(href='/putmsg') 留言板
+              li
+                a(href='/logout') 退出
+            else
+              li
+                a(href="/login") 登录
+                  span.badge 2
+              li
+                a(href="/reg") 注册
+                  span.badge 9
+            li.dropdown
+              a.dropdown-toggle(href="#",data-toggle="dropdown",role="button",aria-haspopup="true",aria-expanded="false") 我的主页
+              ul.dropdown-menu
+                li.divider(role="separator")
+                li
+                  a(href="#",data-toggle='modal',data-target='#myModal') 登陆
+                    span.glyphicon.glyphicon-road
+                li.divider(role="separator")
+                li
+                  a(href="/login") 登录
+                    span.badge 2
+                li.divider(role="separator")
+                li
+                  a(href="/reg") 注册
+                    span.badge 9
+                li.divider(role="separator")
+                li
+                  a(href="/photo") 相册
+                li.divider(role="separator")
+                li
+                  a(href="#") 说说
+                li.divider(role="separator")
+                li
+                  a(href="#") 音乐
+                li.divider(role="separator")
+                li
+                  a(href="/putmsg") 留言
+    #container.container
+      if (success)
+        .alert.alert-success
+          h1= success
+      if (error)
+        .alert.alert-error
+          h1= error
+      block content

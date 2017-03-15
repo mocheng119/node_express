@@ -1,0 +1,20 @@
+extends layout
+block content
+    .row
+      form(method='post',action='/photo',enctype='multipart/form-data',name='upload')
+        .form-group
+          input(type='text',name='imgname')
+          input(type='file',name='imgfile')
+          input.btn.btn-primary(type='submit',value='上传')
+    .row
+      .col-md-6.grid
+        .grid-item
+          each photo in photosAll
+            .col-sm-3.img-group-h
+              .thumbnail.thumbnail-i
+                img.thumbnail-img(src='./'+'#{photo.url}',alt='')
+                .caption.thumbail-caption
+                  h3 照片的名字是#{photo.name}
+                  p 照片的上传日期是#{photo.uploadDate}
+                  p 照片的拥有者是#{photo.username}
+                    a.btn.btn-primary.morebtn(href='#',role='button') More

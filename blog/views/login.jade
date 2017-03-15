@@ -1,0 +1,11 @@
+extends layout
+block content
+  form.login_reg(method='post')
+    .form-group
+      lable.exampleInputEmail1 个人邮箱
+      input.form-control#exampleInputEmail1(type='email',placeholder="Email",name='username')
+    .form-group
+      label.exampleInputPassword1 密码
+      input.form-control#exampleInputPassword1(type='password',placeholder="password",name='password')
+    .form-group
+      button.btn.btn-primary.login_reg_btn(type='submit') 登录

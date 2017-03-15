@@ -1,0 +1,34 @@
+extends layout
+block content
+  .meaagehome.container
+    .row#currentUser(name='#{username}')
+      h1 聊天室
+        h2 欢迎来到聊天室,当前用户
+          p= username
+    .row#userList
+       h4 用户列表
+       ul
+         each user in users
+           if (user.name!==username && user.name)
+             li #{user.name}
+                button.userForm(to='#{user.name}') 和#{user.name}聊天
+    .modal.fadein.msgform#login-box
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button',data-dismiss="modal")
+              span(aria-hidden="true")
+              span.sr-only close
+            h4.modal-title 我是标题
+          .modal-body
+            form.form-horizontal(action='',method="post")
+              .from-group
+                textarea.chatmessages.col-md-12.form-controlform-control(rows='10',readonly)
+              .from-group
+                textarea.message.col-md-12.form-control(name='message',rows='3')
+                button.btn.pull-right.btn-sm.btn-default.btn-close(type='button',data-dismiss="modal") 关闭
+                button.btn.btn-sm.btn-success.pull-right.sendmsg(type='button') 发送
+    script(src='./javascripts/socket.userClient.js',type="text/javascript",charset="utf-8")
+
+
+

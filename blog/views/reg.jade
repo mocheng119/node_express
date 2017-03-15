@@ -1,0 +1,14 @@
+extends layout
+block content
+  form.login_reg(method='post')
+    .form-group
+      lable.exampleInputEmail1 个人邮箱
+      input.form-control#exampleInputEmail1(type='email',placeholder="请输个人邮箱",name='username')
+    .form-group
+      label.exampleInputPassword1 密码
+      input.form-control#exampleInputPassword1(type='password',placeholder="password",name='password')
+    .form-group
+      label.exampleInputPassword1 密码确认
+      input.form-control#exampleInputPassword1(type='password',placeholder="password",name='password2')
+    .form-group
+      button.btn.btn-primary(type='submit') 注册

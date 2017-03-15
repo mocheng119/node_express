@@ -1,0 +1,29 @@
+.row
+  //- - posts.forEach (function(post, index) {
+  //-   - if (index % 4 == 0) {
+  //-   .col-md-3
+  //-     h2= post.user
+  //-     p= post.post
+  //-     p= post.time
+  //-   - }
+  //- })
+  //- - for (var i=0; i<posts.length; i++) {
+  //-   - if(i % 4 == 0) {
+  //-     .col-md-3
+  //-       h2= post.user
+  //-       p= post.post
+  //-       p= post.time
+  //-   - }
+  //- - }
+  each post in posts
+    .post_index
+      .jumbotron
+        .post_info_one
+          .post_index_f1
+            .post_index_f1_left
+              h1: img.img-circle(src="./images/background.jpg",alt="...")
+            .post_index_f1_right
+              p #{post.user} 说
+              a(href='#') 发表于#{post.time}
+          .post_index_f2
+            p 他说：#{post.post}

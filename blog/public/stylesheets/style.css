@@ -1,0 +1,189 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url(../images/background.jpg);
+    background-color: #FF0066;
+    opacity: 1;
+}
+
+a {
+    color: #00B7FF;
+}
+
+
+/*滚动条样式*/
+
+::-webkit-scrollbar
+/*整体部分*/
+
+{
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track
+/*滑动轨道*/
+
+{
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+/*滑块*/
+
+{
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover
+/*滑块效果*/
+
+{
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.meaagehome {
+    margin-top: 40px;
+    color: blue;
+    border: 1px black solid;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.messgeContent {
+    border: 1px #030 solid;
+    border-radius: 5px;
+    height: 400px;
+    width: 50%;
+    text-align: left;
+    display: block;
+    float: left;
+}
+
+.msgset {
+    display: block;
+}
+
+.msgset button {
+    float: right;
+}
+
+.msgput {
+    display: block;
+}
+
+#userList {
+    border: 1px solid red;
+    border-radius: 5px;
+    display: block;
+    width: 20%;
+    float: right;
+    height: 400px;
+}
+
+.container {
+    margin-top: 40px;
+    background-color: white;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 20px;
+}
+
+img.navbar-brand {
+    float: left;
+    height: 52px;
+    padding: 5px;
+    font-size: 18px;
+    line-height: 38px;
+    border-radius: 50px;
+}
+
+.login_reg {
+    background-color: #f96;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 20px;
+    margin: 20px auto;
+    border-radius: 20px;
+    width: 50%;
+}
+.login_reg_btn{
+	margin: 12px 36% 12px 44%;
+}
+.posts{
+	margin: 20px 6px;
+	border-radius: 20px;
+	width: 90%;
+}
+.post_index{
+	display: block;
+	background: #eee;
+	opacity: 0.8;
+	padding:5px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	
+}
+.post_index .jumbotron {
+padding:5px;
+background: white;
+}
+.posts_left{
+	display: block;
+	float: left;
+	width: 35%;
+	border:1px solid black;
+}
+.posts_right{
+	display: block;
+	float: left;
+	width: 60%;
+	margin-left: 5%;
+}
+.post_index img{
+	width: 60px;
+	height: 60px;
+}
+.post_index p{text-align: left;}
+.post_index_f1{
+	display: block;
+	height: 80px;
+	/*border:1px solid black;*/
+}
+.post_index_f1_left h1{
+	margin: 5px ;
+}
+.post_index_f1_left{
+	display: block;
+	float: left;
+	width: 80px;
+	/*border: 1px solid black;*/
+}
+.post_index_f1_right{
+	margin-left: 2%;
+	display: block;
+	float: left;
+	width: 60%;
+	/*border: 1px solid black;*/
+}
+.post_index_f1_right p{
+	margin-bottom: 8px;
+}
+.post_index_f2{
+	display: block;
+	height: 80px;
+	/*border:1px solid black;*/
+}
+.post_info_one{
+	display: block;
+	background: white;
+}

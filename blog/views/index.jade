@@ -1,0 +1,21 @@
+extends layout
+block content
+  if (!user)
+    .jumbotron
+      h1 欢迎来到Line圈
+      p.text-danger Line圈是一个基于node.js构建的朋友圈
+      p
+        a.btn.btn-primary.btn-large(href='/login') 登录
+        a.btn.btn-large.btn-danger(href='/reg') 立即注册
+    .posts
+      include posts
+  else
+    .jumbotron
+      h1 欢迎来到Line圈
+      p.text-primary Line圈是一个基于node.js构建的朋友圈
+    .posts
+      .posts_left
+        p 在线好友
+      .posts_right
+        include say
+        include posts

@@ -1,0 +1,124 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('blog:server');
+var http = require('http');
+//var https=require('https');
+var Msg = require('../models/msg.js');
+//https相关
+// var fs=require('fs');
+
+// var options={
+//   key:fs.readFileSync('key.pem'),
+//   cert:fs.readFileSync('key-cert.pem')
+// };
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+//var server = https.createServer(options,app);
+var io=require('socket.io')(server);
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
+//处理socket消息
+io.on('connection',function(socket){
+  console.log('a person connect');
+  //开始处理所有聊天请求
+  socket.on('chat message',function(from,to,msg){
+    //将信息存入数据库中
+    var time=new Date();
+    var msginfo=new Msg(from,to,time,msg,'a');
+    Msg.get(from,function(err,msg){
+      // var timenow=Date.now();
+      // if(msg.time===timenow){
+      //   req.flash('error', err);
+      //   return res.redirect('/messagehome');
+      // }
+      console.log(msginfo.from);
+      msginfo.save(function(err){
+        if (err) {
+            throw err;
+        }
+      });
+    });
+    io.emit(to+'_message',from,msg,time);
+  });
+});
